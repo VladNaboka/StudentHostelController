@@ -22,6 +22,9 @@ namespace ManagementOfTheStudentsHostel
         }
         public DateTime CreateDate { get; set; }
         public string Notes { get; set; }
+        public string IIN { get; set; }
+
+        public bool IsGuest { get; set; }
 
         public UserClass() { }
 
@@ -31,7 +34,9 @@ namespace ManagementOfTheStudentsHostel
             int room,
             int accessLevel,
             DateTime createDate,
-            string notes)
+            string notes,
+            int iin,
+            bool isGuest)
         {
             Login = login;
             Password = password;
@@ -40,6 +45,8 @@ namespace ManagementOfTheStudentsHostel
             AccessLevel = accessLevel;
             CreateDate = createDate;
             Notes = notes;
+            IIN = iin.ToString();
+            IsGuest = isGuest;
         }
 
     }

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,7 @@ namespace ManagementOfTheStudentsHostel
     {
         public FileManager session;
         public UserClass currentOpenUser;
+        public MeropriatiaClass currentOpenEvent;
 
         public MainForm()
         {
@@ -38,6 +42,8 @@ namespace ManagementOfTheStudentsHostel
                         session = lf.fm;
                         FullNameLabel.Text = session.user.FullName;
                         AccesLvlLabel.Text = session.user.AccessLevelString;
+                        textIIN.Text = session.user.IIN;
+
                         if (session.user.AccessLevelString == "Администратор")
                         {
                             buttonRegistr.Visible = true;
@@ -60,7 +66,6 @@ namespace ManagementOfTheStudentsHostel
             }
         }
 
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OpenAccount(session.user.Login);
@@ -71,14 +76,12 @@ namespace ManagementOfTheStudentsHostel
 
             if (login == "")
             {
-                currentOpenUser = new UserClass("", "", "", 0, 0, DateTime.Now, "");
+                currentOpenUser = new UserClass("", "", "", 0, 0, DateTime.Now, "", 0, false);
             }
             else
             {
                 currentOpenUser = session.GetUser(login);
             }
-
-
 
             // заносим данные
             FullNameTB.Text = currentOpenUser.FullName;
@@ -87,6 +90,7 @@ namespace ManagementOfTheStudentsHostel
             dateTimePicker2.Value = currentOpenUser.CreateDate;
             PasswordTB.Text = currentOpenUser.Password;
             LoginTB.Text = currentOpenUser.Login;
+            textIIN.Text = currentOpenUser.IIN;
 
             // устанавливаем права
 
@@ -122,6 +126,7 @@ namespace ManagementOfTheStudentsHostel
                         RoomNB.Enabled = true;
                         dateTimePicker2.Enabled = true;
                         LoginPanel.Visible = true;
+                        textIIN.Enabled = true;
                         // если создаем новый акк, то включаем редактирование логина
                         if (login == "")
                         {
@@ -139,6 +144,7 @@ namespace ManagementOfTheStudentsHostel
                         RoomNB.Enabled = true;
                         dateTimePicker2.Enabled = false;
                         LoginPanel.Visible = false;
+                        textIIN.Enabled = false;
                     }
                     break;
                 case "Студент":
@@ -148,6 +154,7 @@ namespace ManagementOfTheStudentsHostel
                         RoomNB.Enabled = false;
                         dateTimePicker2.Enabled = false;
                         LoginPanel.Visible = false;
+                        textIIN.Enabled = false;
                     }
                     break;
                 default:
@@ -160,6 +167,31 @@ namespace ManagementOfTheStudentsHostel
             tabControl1.SelectTab(1);
         }
 
+        private void OpenEvent(string eventName)
+        {
+            if (eventName == "")
+            {
+                currentOpenEvent = new MeropriatiaClass("", "", DateTime.Now);
+            }
+            else
+            {
+                // Получение данных мероприятия из экземпляра FileManager
+                currentOpenEvent = session.GetEvent(eventName);
+            }
+
+            // Отображение данных мероприятия в элементах управления
+            nameEventsTB.Text = currentOpenEvent.NameEvent;
+            DescriptionEvents.Text = currentOpenEvent.DescriptionEvent;
+            dateTimePicker1.Value = currentOpenEvent.DateEvent;
+
+            // Установка доступности элементов управления в зависимости от уровня доступа
+            // Здесь можно добавить дополнительные условия, если необходимо
+            buttonSaved.Enabled = false; // Отключаем кнопку сохранения изменений по умолчанию
+
+            RefreshMeropriatiaList();
+            // Переключение на вкладку с мероприятиями
+            tabControl1.SelectTab(2);
+        }
 
         private void SaveChangesBtn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -171,13 +203,14 @@ namespace ManagementOfTheStudentsHostel
             currentOpenUser.CreateDate = dateTimePicker2.Value;
             currentOpenUser.Login = LoginTB.Text;
             currentOpenUser.Password = PasswordTB.Text;
+            currentOpenUser.IIN = textIIN.Text;
 
             try
             {
                 if (newUser)
                 {
                     session.CreateUser(currentOpenUser);
-                    OpenAccount(currentOpenUser.Login);
+                    OpenAccount(currentOpenUser.IIN);
                 }
                 else
                 {
@@ -214,6 +247,15 @@ namespace ManagementOfTheStudentsHostel
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = source;
         }
+        private void RefreshMeropriatiaList()
+        {
+            var source = new BindingSource();
+
+            List<MeropriatiaClass> list = session.GetAllEvents();
+            source.DataSource = list;
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.DataSource = source;
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -248,40 +290,187 @@ namespace ManagementOfTheStudentsHostel
             tabControl1.SelectTab(0);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private string GenerateRandomLogin()
         {
-            bool newUser = currentOpenUser.Login == "";
+            Random random = new Random();
+            const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(characters, 8)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
-            currentOpenUser.AccessLevel = Helper.AccessLevelTextToInt(AccessLevelCB.Text);
-            currentOpenUser.FullName = FullNameTB.Text;
-            currentOpenUser.Room = Decimal.ToInt32(RoomNB.Value);
-            currentOpenUser.CreateDate = dateTimePicker2.Value;
-            currentOpenUser.Login = LoginTB.Text;
-            currentOpenUser.Password = PasswordTB.Text;
+        private string GenerateRandomPassword()
+        {
+            Random random = new Random();
+            const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+            return new string(Enumerable.Repeat(characters, 12)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
-            try
+        private void ButtonSaved_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 3)
             {
-                if (newUser)
+                //MessageBox.Show("Добавление нового мероприятия!");
+                // Проверяем, что currentOpenEvent не равен null
+                if (currentOpenEvent != null)
                 {
-                    session.CreateUser(currentOpenUser);
-                    OpenAccount(currentOpenUser.Login);
+                    bool newEvent = currentOpenEvent.NameEvent == "";
+
+                    currentOpenEvent.NameEvent = nameEventsTB.Text;
+                    currentOpenEvent.DescriptionEvent = DescriptionEvents.Text;
+                    currentOpenEvent.DateEvent = dateTimePicker1.Value;
+
+                    try
+                    {
+                        session.AddEvent(currentOpenEvent);
+
+                        if (newEvent)
+                        {
+                            OpenEvent(currentOpenEvent.NameEvent);
+                        }
+
+                        buttonSaved.Enabled = false;
+                    }
+                    catch (UserAlreadyExistException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка!");
+                    }
                 }
                 else
                 {
-                    session.ChangeUser(currentOpenUser);
+                    // Если currentOpenEvent равен null, создаем новый экземпляр MeropriatiaClass
+                    currentOpenEvent = new MeropriatiaClass("", "", DateTime.Now);
+                    //OpenEvent(currentOpenEvent.NameEvent);
+                    // Здесь можно добавить дополнительные действия с currentOpenEvent
+                    bool newEvent = currentOpenEvent.NameEvent == "";
+
+                    currentOpenEvent.NameEvent = nameEventsTB.Text;
+                    currentOpenEvent.DescriptionEvent = DescriptionEvents.Text;
+                    currentOpenEvent.DateEvent = dateTimePicker1.Value;
+
+                    try
+                    {
+                        session.AddEvent(currentOpenEvent);
+
+                        if (newEvent)
+                        {
+                            OpenEvent(currentOpenEvent.NameEvent);
+                        }
+
+                        buttonSaved.Enabled = false;
+                    }
+                    catch (UserAlreadyExistException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка!");
+                    }
+
+                    buttonSaved.Enabled = false;
                 }
 
-                buttonSaved.Enabled = false;
+            }
 
-            }
-            catch (UserAlreadyExistException ex)
+            if (tabControl1.SelectedIndex == 1)
             {
-                MessageBox.Show(ex.Message, "Ошибка!");
+                bool isGuest = string.IsNullOrEmpty(LoginTB.Text) && string.IsNullOrEmpty(PasswordTB.Text);
+
+                bool newUser = currentOpenUser.Login == "";
+
+                currentOpenUser.AccessLevel = Helper.AccessLevelTextToInt(AccessLevelCB.Text);
+                currentOpenUser.FullName = FullNameTB.Text;
+                currentOpenUser.Room = Decimal.ToInt32(RoomNB.Value);
+                currentOpenUser.CreateDate = dateTimePicker2.Value;
+                currentOpenUser.IIN = textIIN.Text;
+                currentOpenUser.IsGuest = isGuest;
+
+                if (isGuest)
+                {
+                    string generatedLogin = GenerateRandomLogin();
+                    string generatedPassword = GenerateRandomPassword();
+
+                    // Проверяем уникальность логина
+                    while (session.IsLoginExists(generatedLogin))
+                    {
+                        generatedLogin = GenerateRandomLogin();
+                    }
+
+                    // Устанавливаем сгенерированный логин и пароль
+                    LoginTB.Text = generatedLogin;
+                    PasswordTB.Text = generatedPassword;
+                    currentOpenUser.Login = LoginTB.Text;
+                    currentOpenUser.Password = PasswordTB.Text;
+                }
+
+                try
+                {
+                    if (newUser)
+                    {
+                        session.CreateUser(currentOpenUser);
+                        OpenAccount(currentOpenUser.Login);
+                    }
+                    else
+                    {
+                        session.ChangeUser(currentOpenUser);
+                    }
+
+                    buttonSaved.Enabled = false;
+
+                }
+                catch (UserAlreadyExistException ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!");
+                }
             }
+            
         }
         private void buttonRegistr_Click(object sender, EventArgs e)
         {
             OpenAccount("");
+        }
+
+        private void textIIN_TextChanged(object sender, EventArgs e)
+        {
+            buttonSaved.Enabled = true;
+        }
+
+        private void AccessLevelCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewLinkColumn &&
+                e.RowIndex >= 0)
+            {
+                string eventName = senderGrid.Rows[e.RowIndex].Cells[senderGrid.Columns["NameEvent"].Index].Value.ToString();
+                OpenEvent(eventName);
+                MessageBox.Show("aWdawd");
+            }
+        }
+
+        private void MeropriatiaButton_Click_1(object sender, EventArgs e)
+        {
+            RefreshMeropriatiaList();
+
+            tabControl1.SelectTab(2);
+        }
+
+        private void CreateEventsButton_Click_1(object sender, EventArgs e)
+        {
+            buttonSaved.Enabled = false;
+            tabControl1.SelectTab(3);
+        }
+
+        private void DescriptionEvents_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nameEventsTB_TextChanged(object sender, EventArgs e)
+        {
+            buttonSaved.Enabled = true;
         }
     }
 }

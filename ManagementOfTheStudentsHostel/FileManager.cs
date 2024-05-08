@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -11,8 +12,16 @@ namespace ManagementOfTheStudentsHostel
     public class FileManager
     {
         public UserClass user = new UserClass();
-        
-        public FileManager() { }
+
+        private List<MeropriatiaClass> events;
+        private string filePath = "events.json";
+
+        //public EventsManager eventsManager;
+
+        public FileManager() 
+        { 
+            LoadEventsFromFile();
+        }
 
         public UserClass GetUser(string login)
         {
@@ -39,6 +48,7 @@ namespace ManagementOfTheStudentsHostel
                 userToReturn.Room = int.Parse(sr.ReadLine());
                 userToReturn.AccessLevel = int.Parse(sr.ReadLine());
                 userToReturn.CreateDate = DateTime.Parse(sr.ReadLine());
+                userToReturn.IIN = sr.ReadLine();
             }
 
             // файл c заметками о пользователе
@@ -103,6 +113,7 @@ namespace ManagementOfTheStudentsHostel
                     user.Room = int.Parse(sr.ReadLine());
                     user.AccessLevel = int.Parse(sr.ReadLine());
                     user.CreateDate = DateTime.Parse(sr.ReadLine());
+                    user.IIN = sr.ReadLine();
                 }
                 // иначе ошибка
                 else
@@ -135,7 +146,7 @@ namespace ManagementOfTheStudentsHostel
             // проверка сущестования файла пользователя
             if (File.Exists(userFolder))
             {
-                throw new UserAlreadyExistException("Пользователь с логином "+ newUser.Login+" уже существует!");
+                throw new UserAlreadyExistException("Пользователь с логином "+ newUser.Login + " уже существует!");
             }
             else
             {
@@ -160,6 +171,7 @@ namespace ManagementOfTheStudentsHostel
                 sw.WriteLine(newUser.Room);
                 sw.WriteLine(newUser.AccessLevel);
                 sw.WriteLine(newUser.CreateDate);
+                sw.WriteLine(newUser.IIN);
             }
 
             // файл c заметками о пользователе
@@ -170,6 +182,15 @@ namespace ManagementOfTheStudentsHostel
                 sw.Write(newUser.Notes);
             }
         }
+        public bool IsLoginExists(string login)
+        {
+            // папка пользователя 
+            string userFolder = Directory.GetCurrentDirectory() + "\\Users\\" + login;
+
+            // проверяем существование папки пользователя
+            return Directory.Exists(userFolder);
+        }
+
 
         public List<UserClass> GetAllUsers()
         {
@@ -184,12 +205,101 @@ namespace ManagementOfTheStudentsHostel
 
             foreach (string folder in usersFolders)
             {
-                // folderShortName == login
+                //folderShortName == login
                 string folderShortName = Path.GetFileName(folder);
-                userstToReturn.Add(GetUser(folderShortName));
+                UserClass user = GetUser(folderShortName);
+
+                //userstToReturn.Add(GetUser(folderShortName));
+
+                // Проверяем, является ли пользователь студентом
+                if (user.AccessLevel == Helper.AccessLevelTextToInt("Студент"))
+                {
+                    // Добавляем студента в список
+                    userstToReturn.Add(user);
+                }
             }
 
             return userstToReturn;
         }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="newEvent"></param>
+
+        public void AddEvent(MeropriatiaClass newEvent)
+        {
+            // Проверка существования мероприятия с таким же названием
+            if (events.Exists(e => e.NameEvent == newEvent.NameEvent))
+            {
+                throw new InvalidOperationException("Мероприятие с таким названием уже существует!");
+            }
+
+            // Добавление нового мероприятия
+            events.Add(newEvent);
+
+            // Сохранение обновленного списка мероприятий
+            SaveEventsToFile();
+        }
+
+        public void UpdateEvent(MeropriatiaClass updatedEvent)
+        {
+            // Поиск мероприятия по имени и обновление его данных
+            var existingEvent = events.Find(e => e.NameEvent == updatedEvent.NameEvent);
+            if (existingEvent != null)
+            {
+                existingEvent.DescriptionEvent = updatedEvent.DescriptionEvent;
+                existingEvent.DateEvent = updatedEvent.DateEvent;
+
+                // Сохранение обновленного списка мероприятий
+                SaveEventsToFile();
+            }
+            else
+            {
+                throw new InvalidOperationException("Мероприятие с таким названием не найдено!");
+            }
+        }
+        public MeropriatiaClass GetEvent(string nameEvent)
+        {
+            //// проверка сущестования файла пользователя
+            //if (!File.Exists(nameEvent))
+            //{
+            //    throw new LoginException("Такого мероприятия не существует!");
+            //}
+
+            MeropriatiaClass eventData = events.Find(e => e.NameEvent == nameEvent);
+
+            return eventData;
+        }
+
+        private void SaveEventsToFile()
+        {
+            string json = JsonConvert.SerializeObject(events);
+            File.WriteAllText(filePath, json);
+        }
+
+        private void LoadEventsFromFile()
+        {
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                events = JsonConvert.DeserializeObject<List<MeropriatiaClass>>(json);
+            }
+            else
+            {
+                events = new List<MeropriatiaClass>();
+            }
+        }
+
+        public List<MeropriatiaClass> GetAllEvents()
+        {
+            // Проверяем, загружены ли мероприятия
+            if (events == null)
+            {
+                LoadEventsFromFile();
+            }
+
+            return events;
+        }
+
     }
 }

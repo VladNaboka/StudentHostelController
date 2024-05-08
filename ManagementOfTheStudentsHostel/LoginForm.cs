@@ -25,10 +25,17 @@ namespace ManagementOfTheStudentsHostel
            
             try
             {
-                fm.Login(loginTxt.Text, passwordTxt.Text);
+                if (loginTxt.Text == "admin" || loginTxt.Text == "moderator") 
+                {
+                    fm.Login(loginTxt.Text, passwordTxt.Text);
 
-                DialogResult = DialogResult.OK;
-                Close();
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин или пароль!");
+                }
             }
             catch (LoginException ex)
             {
@@ -39,8 +46,7 @@ namespace ManagementOfTheStudentsHostel
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            
-                passwordTxt.UseSystemPasswordChar = ShowPassord.Checked;
+            passwordTxt.UseSystemPasswordChar = ShowPassord.Checked;
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
