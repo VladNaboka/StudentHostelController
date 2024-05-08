@@ -13,7 +13,7 @@ namespace ManagementOfTheStudentsHostel
     {
         public UserClass user = new UserClass();
 
-        private List<MeropriatiaClass> events;
+        public List<MeropriatiaClass> events;
         private string filePath = "events.json";
 
         //public EventsManager eventsManager;

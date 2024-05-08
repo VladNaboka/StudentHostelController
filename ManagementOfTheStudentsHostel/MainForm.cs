@@ -184,13 +184,20 @@ namespace ManagementOfTheStudentsHostel
             DescriptionEvents.Text = currentOpenEvent.DescriptionEvent;
             dateTimePicker1.Value = currentOpenEvent.DateEvent;
 
+
+            //if (session.events.Find(e => e.NameEvent == eventName) == currentOpenEvent)
+            //{
+            //    buttonSaved.Enabled = false;
+            //    tabControl1.SelectTab(3);
+            //}
+
             // Установка доступности элементов управления в зависимости от уровня доступа
             // Здесь можно добавить дополнительные условия, если необходимо
             buttonSaved.Enabled = false; // Отключаем кнопку сохранения изменений по умолчанию
 
             RefreshMeropriatiaList();
             // Переключение на вкладку с мероприятиями
-            tabControl1.SelectTab(2);
+            tabControl1.SelectTab(3);
         }
 
         private void SaveChangesBtn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -322,11 +329,14 @@ namespace ManagementOfTheStudentsHostel
 
                     try
                     {
-                        session.AddEvent(currentOpenEvent);
-
                         if (newEvent)
                         {
+                            session.AddEvent(currentOpenEvent);
                             OpenEvent(currentOpenEvent.NameEvent);
+                        }
+                        else
+                        {
+                            session.UpdateEvent(currentOpenEvent);
                         }
 
                         buttonSaved.Enabled = false;
@@ -350,11 +360,15 @@ namespace ManagementOfTheStudentsHostel
 
                     try
                     {
-                        session.AddEvent(currentOpenEvent);
-
+                        
                         if (newEvent)
                         {
+                            session.AddEvent(currentOpenEvent);
                             OpenEvent(currentOpenEvent.NameEvent);
+                        }
+                        else
+                        {
+                            session.UpdateEvent(currentOpenEvent);
                         }
 
                         buttonSaved.Enabled = false;
@@ -446,7 +460,6 @@ namespace ManagementOfTheStudentsHostel
             {
                 string eventName = senderGrid.Rows[e.RowIndex].Cells[senderGrid.Columns["NameEvent"].Index].Value.ToString();
                 OpenEvent(eventName);
-                MessageBox.Show("aWdawd");
             }
         }
 
@@ -459,16 +472,22 @@ namespace ManagementOfTheStudentsHostel
 
         private void CreateEventsButton_Click_1(object sender, EventArgs e)
         {
+            OpenEvent("");
             buttonSaved.Enabled = false;
             tabControl1.SelectTab(3);
         }
 
         private void DescriptionEvents_TextChanged(object sender, EventArgs e)
         {
-
+            buttonSaved.Enabled = true;
         }
 
         private void nameEventsTB_TextChanged(object sender, EventArgs e)
+        {
+            buttonSaved.Enabled = true;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             buttonSaved.Enabled = true;
         }

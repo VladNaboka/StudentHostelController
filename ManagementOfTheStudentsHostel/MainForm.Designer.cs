@@ -70,7 +70,7 @@
             this.buttonSaved = new System.Windows.Forms.Button();
             this.MeropriatiaButton = new System.Windows.Forms.Button();
             this.CreateEventsButton = new System.Windows.Forms.Button();
-            this.NameEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameEvent = new System.Windows.Forms.DataGridViewLinkColumn();
             this.DescriptionEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -585,6 +585,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(452, 34);
             this.dateTimePicker1.TabIndex = 21;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // nameEventsTB
             // 
@@ -632,7 +633,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(976, 47);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(976, 20);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // AccesLvlLabel
@@ -640,10 +641,10 @@
             this.AccesLvlLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.AccesLvlLabel.AutoSize = true;
             this.AccesLvlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AccesLvlLabel.Location = new System.Drawing.Point(278, 11);
+            this.AccesLvlLabel.Location = new System.Drawing.Point(278, 0);
             this.AccesLvlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AccesLvlLabel.Name = "AccesLvlLabel";
-            this.AccesLvlLabel.Size = new System.Drawing.Size(78, 25);
+            this.AccesLvlLabel.Size = new System.Drawing.Size(78, 20);
             this.AccesLvlLabel.TabIndex = 4;
             this.AccesLvlLabel.Text = "Статус";
             // 
@@ -652,10 +653,10 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(146, 11);
+            this.label4.Location = new System.Drawing.Point(146, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 25);
+            this.label4.Size = new System.Drawing.Size(124, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Ваш статус:";
             // 
@@ -664,10 +665,10 @@
             this.FullNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FullNameLabel.Location = new System.Drawing.Point(78, 11);
+            this.FullNameLabel.Location = new System.Drawing.Point(78, 0);
             this.FullNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FullNameLabel.Name = "FullNameLabel";
-            this.FullNameLabel.Size = new System.Drawing.Size(60, 25);
+            this.FullNameLabel.Size = new System.Drawing.Size(60, 20);
             this.FullNameLabel.TabIndex = 3;
             this.FullNameLabel.Text = "ФИО";
             // 
@@ -676,10 +677,10 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(4, 11);
+            this.label2.Location = new System.Drawing.Point(4, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 25);
+            this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "ФИО:";
             // 
@@ -751,6 +752,8 @@
             this.NameEvent.MinimumWidth = 50;
             this.NameEvent.Name = "NameEvent";
             this.NameEvent.ReadOnly = true;
+            this.NameEvent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameEvent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // DescriptionEvent
             // 
@@ -880,7 +883,7 @@
         private System.Windows.Forms.TextBox nameEventsTB;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button CreateEventsButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameEvent;
+        private System.Windows.Forms.DataGridViewLinkColumn NameEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateEvent;
     }
