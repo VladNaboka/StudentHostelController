@@ -49,6 +49,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.NameEvent = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.DescriptionEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EventsDetail = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -58,6 +61,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.nameEventsTB = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.PersonalTab = new System.Windows.Forms.TabPage();
+            this.RoomTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.AccesLvlLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,9 +75,8 @@
             this.buttonSaved = new System.Windows.Forms.Button();
             this.MeropriatiaButton = new System.Windows.Forms.Button();
             this.CreateEventsButton = new System.Windows.Forms.Button();
-            this.NameEvent = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DescriptionEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.userClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.Students.SuspendLayout();
@@ -99,6 +103,8 @@
             this.tabControl1.Controls.Add(this.StudentsDetail);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.EventsDetail);
+            this.tabControl1.Controls.Add(this.PersonalTab);
+            this.tabControl1.Controls.Add(this.RoomTab);
             this.tabControl1.Location = new System.Drawing.Point(0, 20);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Multiline = true;
@@ -504,6 +510,35 @@
             this.dataGridView2.TabIndex = 42;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
+            // NameEvent
+            // 
+            this.NameEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameEvent.DataPropertyName = "NameEvent";
+            this.NameEvent.HeaderText = "Мероприятия";
+            this.NameEvent.MinimumWidth = 50;
+            this.NameEvent.Name = "NameEvent";
+            this.NameEvent.ReadOnly = true;
+            this.NameEvent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameEvent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // DescriptionEvent
+            // 
+            this.DescriptionEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionEvent.DataPropertyName = "DescriptionEvent";
+            this.DescriptionEvent.HeaderText = "Описание мероприятия";
+            this.DescriptionEvent.MinimumWidth = 6;
+            this.DescriptionEvent.Name = "DescriptionEvent";
+            this.DescriptionEvent.ReadOnly = true;
+            // 
+            // DateEvent
+            // 
+            this.DateEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DateEvent.DataPropertyName = "DateEvent";
+            this.DateEvent.HeaderText = "Дата мероприятия";
+            this.DateEvent.MinimumWidth = 6;
+            this.DateEvent.Name = "DateEvent";
+            this.DateEvent.ReadOnly = true;
+            // 
             // EventsDetail
             // 
             this.EventsDetail.Controls.Add(this.tableLayoutPanel3);
@@ -608,6 +643,24 @@
             this.label17.TabIndex = 15;
             this.label17.Text = "Название мероприятия:";
             // 
+            // PersonalTab
+            // 
+            this.PersonalTab.Location = new System.Drawing.Point(4, 25);
+            this.PersonalTab.Name = "PersonalTab";
+            this.PersonalTab.Size = new System.Drawing.Size(969, 468);
+            this.PersonalTab.TabIndex = 4;
+            this.PersonalTab.Text = "Personal";
+            this.PersonalTab.UseVisualStyleBackColor = true;
+            // 
+            // RoomTab
+            // 
+            this.RoomTab.Location = new System.Drawing.Point(4, 25);
+            this.RoomTab.Name = "RoomTab";
+            this.RoomTab.Size = new System.Drawing.Size(969, 468);
+            this.RoomTab.TabIndex = 5;
+            this.RoomTab.Text = "RoomTab";
+            this.RoomTab.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Info;
@@ -633,7 +686,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(976, 20);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(976, 21);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // AccesLvlLabel
@@ -644,7 +697,7 @@
             this.AccesLvlLabel.Location = new System.Drawing.Point(278, 0);
             this.AccesLvlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AccesLvlLabel.Name = "AccesLvlLabel";
-            this.AccesLvlLabel.Size = new System.Drawing.Size(78, 20);
+            this.AccesLvlLabel.Size = new System.Drawing.Size(78, 21);
             this.AccesLvlLabel.TabIndex = 4;
             this.AccesLvlLabel.Text = "Статус";
             // 
@@ -656,7 +709,7 @@
             this.label4.Location = new System.Drawing.Point(146, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 20);
+            this.label4.Size = new System.Drawing.Size(124, 21);
             this.label4.TabIndex = 3;
             this.label4.Text = "Ваш статус:";
             // 
@@ -668,7 +721,7 @@
             this.FullNameLabel.Location = new System.Drawing.Point(78, 0);
             this.FullNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FullNameLabel.Name = "FullNameLabel";
-            this.FullNameLabel.Size = new System.Drawing.Size(60, 20);
+            this.FullNameLabel.Size = new System.Drawing.Size(60, 21);
             this.FullNameLabel.TabIndex = 3;
             this.FullNameLabel.Text = "ФИО";
             // 
@@ -680,7 +733,7 @@
             this.label2.Location = new System.Drawing.Point(4, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
+            this.label2.Size = new System.Drawing.Size(66, 21);
             this.label2.TabIndex = 2;
             this.label2.Text = "ФИО:";
             // 
@@ -700,7 +753,7 @@
             this.buttonUsers.Name = "buttonUsers";
             this.buttonUsers.Size = new System.Drawing.Size(163, 36);
             this.buttonUsers.TabIndex = 14;
-            this.buttonUsers.Text = "Все пользователи";
+            this.buttonUsers.Text = "Студенты";
             this.buttonUsers.UseVisualStyleBackColor = true;
             this.buttonUsers.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -726,7 +779,7 @@
             // 
             // MeropriatiaButton
             // 
-            this.MeropriatiaButton.Location = new System.Drawing.Point(407, 523);
+            this.MeropriatiaButton.Location = new System.Drawing.Point(399, 524);
             this.MeropriatiaButton.Name = "MeropriatiaButton";
             this.MeropriatiaButton.Size = new System.Drawing.Size(163, 36);
             this.MeropriatiaButton.TabIndex = 16;
@@ -744,34 +797,23 @@
             this.CreateEventsButton.UseVisualStyleBackColor = true;
             this.CreateEventsButton.Click += new System.EventHandler(this.CreateEventsButton_Click_1);
             // 
-            // NameEvent
+            // button1
             // 
-            this.NameEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameEvent.DataPropertyName = "NameEvent";
-            this.NameEvent.HeaderText = "Мероприятия";
-            this.NameEvent.MinimumWidth = 50;
-            this.NameEvent.Name = "NameEvent";
-            this.NameEvent.ReadOnly = true;
-            this.NameEvent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameEvent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.button1.Location = new System.Drawing.Point(593, 523);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(163, 36);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Персонал";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // DescriptionEvent
+            // button2
             // 
-            this.DescriptionEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionEvent.DataPropertyName = "DescriptionEvent";
-            this.DescriptionEvent.HeaderText = "Описание мероприятия";
-            this.DescriptionEvent.MinimumWidth = 6;
-            this.DescriptionEvent.Name = "DescriptionEvent";
-            this.DescriptionEvent.ReadOnly = true;
-            // 
-            // DateEvent
-            // 
-            this.DateEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DateEvent.DataPropertyName = "DateEvent";
-            this.DateEvent.HeaderText = "Дата мероприятия";
-            this.DateEvent.MinimumWidth = 6;
-            this.DateEvent.Name = "DateEvent";
-            this.DateEvent.ReadOnly = true;
+            this.button2.Location = new System.Drawing.Point(640, 572);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(163, 36);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Комнаты";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // userClassBindingSource
             // 
@@ -783,6 +825,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(976, 623);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.CreateEventsButton);
             this.Controls.Add(this.MeropriatiaButton);
             this.Controls.Add(this.buttonSaved);
@@ -886,5 +930,9 @@
         private System.Windows.Forms.DataGridViewLinkColumn NameEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateEvent;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage PersonalTab;
+        private System.Windows.Forms.TabPage RoomTab;
     }
 }

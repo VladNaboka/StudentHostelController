@@ -73,7 +73,6 @@ namespace ManagementOfTheStudentsHostel
 
         private void OpenAccount(string login)
         {
-
             if (login == "")
             {
                 currentOpenUser = new UserClass("", "", "", 0, 0, DateTime.Now, "", 0, false);
@@ -103,7 +102,6 @@ namespace ManagementOfTheStudentsHostel
             {
                 LoginPanel.Visible = false;
             }
-
 
             // если админ или это профиль текущего пользователя, то можно показать пароль
             if (session.user.AccessLevelString == "Администратор"
@@ -434,7 +432,6 @@ namespace ManagementOfTheStudentsHostel
                     MessageBox.Show(ex.Message, "Ошибка!");
                 }
             }
-            
         }
         private void buttonRegistr_Click(object sender, EventArgs e)
         {
