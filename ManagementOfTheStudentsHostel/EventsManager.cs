@@ -39,7 +39,7 @@ namespace ManagementOfTheStudentsHostel
             var existingEvent = events.Find(e => e.NameEvent == updatedEvent.NameEvent);
             if (existingEvent != null)
             {
-                existingEvent.DescriptionEvent = updatedEvent.DescriptionEvent;
+                existingEvent.PlaceEvent = updatedEvent.PlaceEvent;
                 existingEvent.DateEvent = updatedEvent.DateEvent;
 
                 // Сохранение обновленного списка мероприятий

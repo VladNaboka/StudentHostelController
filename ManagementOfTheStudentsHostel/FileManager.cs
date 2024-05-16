@@ -14,7 +14,11 @@ namespace ManagementOfTheStudentsHostel
         public UserClass user = new UserClass();
 
         public List<MeropriatiaClass> events;
-        private string filePath = "events.json";
+        public List<RoomsClass> rooms;
+        public List<PersonalClass> personals;
+        private string filePathEvent = "events.json";
+        private string filePathRooms = "rooms.json";
+        private string filePathPersonal = "personal.json";
 
         //public EventsManager eventsManager;
 
@@ -49,6 +53,11 @@ namespace ManagementOfTheStudentsHostel
                 userToReturn.AccessLevel = int.Parse(sr.ReadLine());
                 userToReturn.CreateDate = DateTime.Parse(sr.ReadLine());
                 userToReturn.IIN = sr.ReadLine();
+                userToReturn.Faculty = sr.ReadLine();
+                userToReturn.Speciality = sr.ReadLine();
+                userToReturn.Gender = sr.ReadLine();
+                userToReturn.FormLearning = sr.ReadLine();
+                userToReturn.Course = int.Parse(sr.ReadLine());
             }
 
             // файл c заметками о пользователе
@@ -114,6 +123,11 @@ namespace ManagementOfTheStudentsHostel
                     user.AccessLevel = int.Parse(sr.ReadLine());
                     user.CreateDate = DateTime.Parse(sr.ReadLine());
                     user.IIN = sr.ReadLine();
+                    user.Faculty = sr.ReadLine();
+                    user.Speciality = sr.ReadLine();
+                    user.Gender = sr.ReadLine();
+                    user.FormLearning = sr.ReadLine();
+                    user.Course = int.Parse(sr.ReadLine());
                 }
                 // иначе ошибка
                 else
@@ -172,6 +186,11 @@ namespace ManagementOfTheStudentsHostel
                 sw.WriteLine(newUser.AccessLevel);
                 sw.WriteLine(newUser.CreateDate);
                 sw.WriteLine(newUser.IIN);
+                sw.WriteLine(newUser.Faculty);
+                sw.WriteLine(newUser.Speciality);
+                sw.WriteLine(newUser.Gender);
+                sw.WriteLine(newUser.FormLearning);
+                sw.WriteLine(newUser.Course);
             }
 
             // файл c заметками о пользователе
@@ -228,11 +247,11 @@ namespace ManagementOfTheStudentsHostel
 
         public void AddEvent(MeropriatiaClass newEvent)
         {
-            // Проверка существования мероприятия с таким же названием
-            if (events.Exists(e => e.NameEvent == newEvent.NameEvent))
-            {
-                throw new InvalidOperationException("Мероприятие с таким названием уже существует!");
-            }
+            //// Проверка существования мероприятия с таким же названием
+            //if (events.Exists(e => e.NameEvent == newEvent.NameEvent))
+            //{
+            //    throw new InvalidOperationException("Мероприятие с таким названием уже существует!");
+            //}
 
             // Добавление нового мероприятия
             events.Add(newEvent);
@@ -247,8 +266,10 @@ namespace ManagementOfTheStudentsHostel
             var existingEvent = events.Find(e => e.NameEvent == updatedEvent.NameEvent);
             if (existingEvent != null)
             {
-                existingEvent.DescriptionEvent = updatedEvent.DescriptionEvent;
+                existingEvent.PlaceEvent = updatedEvent.PlaceEvent;
                 existingEvent.DateEvent = updatedEvent.DateEvent;
+                existingEvent.NameEvent = updatedEvent.NameEvent;
+                existingEvent.ExecutorEvent = updatedEvent.ExecutorEvent;
 
                 // Сохранение обновленного списка мероприятий
                 SaveEventsToFile();
@@ -274,14 +295,14 @@ namespace ManagementOfTheStudentsHostel
         private void SaveEventsToFile()
         {
             string json = JsonConvert.SerializeObject(events);
-            File.WriteAllText(filePath, json);
+            File.WriteAllText(filePathEvent, json);
         }
 
         private void LoadEventsFromFile()
         {
-            if (File.Exists(filePath))
+            if (File.Exists(filePathEvent))
             {
-                string json = File.ReadAllText(filePath);
+                string json = File.ReadAllText(filePathEvent);
                 events = JsonConvert.DeserializeObject<List<MeropriatiaClass>>(json);
             }
             else
@@ -301,5 +322,151 @@ namespace ManagementOfTheStudentsHostel
             return events;
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="newRoom"></param>
+        /// 
+
+        public void AddRoom(RoomsClass newRoom)
+        {
+
+            // Добавление новой комнаты
+            rooms.Add(newRoom);
+
+            // Сохранение обновленного списка комнат
+            SaveRoomsToFile();
+        }
+
+        public void UpdateRoom(RoomsClass updatedRoom)
+        {
+            // Поиск комнаты по имени и обновление ее данных
+            var existingRoom = rooms.Find(e => e.NumberRoom == updatedRoom.NumberRoom);
+            if (existingRoom != null)
+            {
+                existingRoom.FloorRoom = updatedRoom.FloorRoom;
+                existingRoom.NumberRoom = updatedRoom.NumberRoom;
+                existingRoom.SquareRoom = updatedRoom.SquareRoom;
+                existingRoom.CountBadroom = updatedRoom.CountBadroom;
+                existingRoom.CountWardrobe = updatedRoom.CountWardrobe;
+                existingRoom.TableRoom = updatedRoom.TableRoom;
+                existingRoom.ChairsRoom = updatedRoom.ChairsRoom;
+                existingRoom.StoveRoom = updatedRoom.StoveRoom;
+                existingRoom.ElectricRoom = updatedRoom.ElectricRoom;
+                existingRoom.WiFiRoom = updatedRoom.WiFiRoom;
+
+                // Сохранение обновленного списка комнат
+                SaveRoomsToFile();
+            }
+            else
+            {
+                throw new InvalidOperationException("Комната с таким названием не найдена!");
+            }
+        }
+        public RoomsClass GetRoom(int numberRoom)
+        {
+            RoomsClass roomData = rooms.Find(e => e.NumberRoom == numberRoom);
+
+            return roomData;
+        }
+
+        private void SaveRoomsToFile()
+        {
+            string json = JsonConvert.SerializeObject(rooms);
+            File.WriteAllText(filePathRooms, json);
+        }
+
+        private void LoadRoomsFromFile()
+        {
+            if (File.Exists(filePathRooms))
+            {
+                string json = File.ReadAllText(filePathRooms);
+                rooms = JsonConvert.DeserializeObject<List<RoomsClass>>(json);
+            }
+            else
+            {
+                rooms = new List<RoomsClass>();
+            }
+        }
+
+        public List<RoomsClass> GetAllRooms()
+        {
+            // Проверяем, загружены ли комнаты
+            if (rooms == null)
+            {
+                LoadRoomsFromFile();
+            }
+
+            return rooms;
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="newPersonal"></param>
+
+        public void AddPersonal(PersonalClass newPersonal)
+        {
+
+            // Добавление нового сотрудника
+            personals.Add(newPersonal);
+
+            // Сохранение обновленного списка сотрудников
+            SavePersonalToFile();
+        }
+
+        public void UpdatePersonal(PersonalClass updatedPersonal)
+        {
+            // Поиск сотрудника по имени и обновление ее данных
+            var existingPersonal = personals.Find(e => e.NamePersonal == updatedPersonal.NamePersonal);
+            if (existingPersonal != null)
+            {
+                existingPersonal.NamePersonal = updatedPersonal.NamePersonal;
+                existingPersonal.PostPersonal = updatedPersonal.PostPersonal;
+                existingPersonal.AdressPersonal = updatedPersonal.AdressPersonal;
+                existingPersonal.PhonePersonal = updatedPersonal.PhonePersonal;
+
+                // Сохранение обновленного списка сотрудников
+                SavePersonalToFile();
+            }
+            else
+            {
+                throw new InvalidOperationException("Комната с таким названием не найдена!");
+            }
+        }
+        public PersonalClass GetPersonal(string numberPersonal)
+        {
+            PersonalClass personalData = personals.Find(e => e.NamePersonal == numberPersonal);
+
+            return personalData;
+        }
+
+        private void SavePersonalToFile()
+        {
+            string json = JsonConvert.SerializeObject(personals);
+            File.WriteAllText(filePathPersonal, json);
+        }
+
+        private void LoadPersonalFromFile()
+        {
+            if (File.Exists(filePathPersonal))
+            {
+                string json = File.ReadAllText(filePathPersonal);
+                personals = JsonConvert.DeserializeObject<List<PersonalClass>>(json);
+            }
+            else
+            {
+                personals = new List<PersonalClass>();
+            }
+        }
+
+        public List<PersonalClass> GetAllPersonal()
+        {
+            // Проверяем, загружены ли сотрудники
+            if (personals == null)
+            {
+                LoadPersonalFromFile();
+            }
+
+            return personals;
+        }
     }
 }

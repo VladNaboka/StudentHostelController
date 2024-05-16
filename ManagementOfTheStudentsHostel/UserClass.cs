@@ -23,6 +23,11 @@ namespace ManagementOfTheStudentsHostel
         public DateTime CreateDate { get; set; }
         public string Notes { get; set; }
         public string IIN { get; set; }
+        public string Faculty { get; set; }
+        public string Speciality { get; set; }
+        public string Gender { get; set; }
+        public string FormLearning { get; set; }
+        public int Course { get; set; }
 
         public bool IsGuest { get; set; }
 
@@ -36,6 +41,11 @@ namespace ManagementOfTheStudentsHostel
             DateTime createDate,
             string notes,
             int iin,
+            string faculty,
+            string speciality,
+            string gender,
+            string formLearning,
+            int course,
             bool isGuest)
         {
             Login = login;
@@ -46,6 +56,11 @@ namespace ManagementOfTheStudentsHostel
             CreateDate = createDate;
             Notes = notes;
             IIN = iin.ToString();
+            Faculty = faculty;
+            Speciality = speciality;
+            Gender = gender;
+            FormLearning = formLearning;
+            Course = course;
             IsGuest = isGuest;
         }
 

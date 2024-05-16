@@ -13,8 +13,8 @@ namespace ManagementOfTheStudentsHostel
             switch (accessLevel)
             {
                 case 0: return "Студент";
-                case 1: return "Модератор";
-                case 2: return "Администратор";
+                case 1: return "Воспитатель";
+                case 2: return "Комендант";
             }
             throw new ArgumentOutOfRangeException("Нет такого уровня доступа!");
         }
@@ -24,8 +24,8 @@ namespace ManagementOfTheStudentsHostel
             switch (accessLevel)
             {
                 case "Студент": return 0;
-                case "Модератор": return 1;
-                case "Администратор": return 2;
+                case "Воспитатель": return 1;
+                case "Комендант": return 2;
             }
             throw new ArgumentOutOfRangeException("Нет такого уровня доступа!");
         }

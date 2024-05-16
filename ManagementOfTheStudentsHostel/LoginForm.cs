@@ -17,15 +17,13 @@ namespace ManagementOfTheStudentsHostel
         public LoginForm()
         {
             InitializeComponent();
-
         }
 
         private void Login_Click(object sender, EventArgs e)
         {
-           
             try
             {
-                if (loginTxt.Text == "admin" || loginTxt.Text == "moderator") 
+                if (loginTxt.Text == "комендант" || loginTxt.Text == "воспитатель") 
                 {
                     fm.Login(loginTxt.Text, passwordTxt.Text);
 
