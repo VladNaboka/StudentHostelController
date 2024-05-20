@@ -120,6 +120,15 @@
             this.NumberRoomFB = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
             this.PersonalAdd = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.PostPersonalFB = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.PhonePersonalFB = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.AdressPersonalFB = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.NamePersonalFB = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.AccesLvlLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
@@ -138,15 +147,6 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.addRoomButton = new System.Windows.Forms.Button();
             this.addPersonalButton = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.PhonePersonalFB = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.AdressPersonalFB = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.NamePersonalFB = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.PostPersonalFB = new System.Windows.Forms.TextBox();
             this.userClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.Students.SuspendLayout();
@@ -177,11 +177,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.FloorRoomFB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumberRoomFB)).BeginInit();
             this.PersonalAdd.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersListBS)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userClassBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -617,7 +617,7 @@
             "Мужской",
             "Женский"});
             this.GenderFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GenderFB.Location = new System.Drawing.Point(144, 357);
+            this.GenderFB.Location = new System.Drawing.Point(152, 357);
             this.GenderFB.Multiline = true;
             this.GenderFB.Name = "GenderFB";
             this.GenderFB.Size = new System.Drawing.Size(129, 29);
@@ -715,7 +715,7 @@
             // RoomNB
             // 
             this.RoomNB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RoomNB.Location = new System.Drawing.Point(234, 58);
+            this.RoomNB.Location = new System.Drawing.Point(251, 58);
             this.RoomNB.Margin = new System.Windows.Forms.Padding(4);
             this.RoomNB.Maximum = new decimal(new int[] {
             1299,
@@ -873,15 +873,17 @@
             // 
             this.labelDateEventFB.AutoSize = true;
             this.labelDateEventFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDateEventFB.Location = new System.Drawing.Point(312, 104);
+            this.labelDateEventFB.Location = new System.Drawing.Point(919, 100);
             this.labelDateEventFB.Name = "labelDateEventFB";
             this.labelDateEventFB.Size = new System.Drawing.Size(71, 29);
             this.labelDateEventFB.TabIndex = 27;
             this.labelDateEventFB.Text = "Дата";
+            this.labelDateEventFB.Visible = false;
             // 
             // ExecutorEventFB
             // 
-            this.ExecutorEventFB.Location = new System.Drawing.Point(249, 289);
+            this.ExecutorEventFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExecutorEventFB.Location = new System.Drawing.Point(280, 291);
             this.ExecutorEventFB.Multiline = true;
             this.ExecutorEventFB.Name = "ExecutorEventFB";
             this.ExecutorEventFB.Size = new System.Drawing.Size(348, 35);
@@ -901,7 +903,8 @@
             // 
             // DescriptionEvents
             // 
-            this.DescriptionEvents.Location = new System.Drawing.Point(294, 198);
+            this.DescriptionEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DescriptionEvents.Location = new System.Drawing.Point(328, 198);
             this.DescriptionEvents.Multiline = true;
             this.DescriptionEvents.Name = "DescriptionEvents";
             this.DescriptionEvents.Size = new System.Drawing.Size(592, 40);
@@ -934,12 +937,11 @@
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(518, 100);
+            this.dateTimePicker1.Location = new System.Drawing.Point(338, 104);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(452, 34);
             this.dateTimePicker1.TabIndex = 21;
-            this.dateTimePicker1.Visible = false;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // nameEventsTB
@@ -1267,17 +1269,18 @@
             // ElectricRoomFB
             // 
             this.ElectricRoomFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ElectricRoomFB.Location = new System.Drawing.Point(332, 336);
+            this.ElectricRoomFB.Location = new System.Drawing.Point(15, 379);
             this.ElectricRoomFB.Margin = new System.Windows.Forms.Padding(4, 25, 27, 4);
+            this.ElectricRoomFB.Multiline = true;
             this.ElectricRoomFB.Name = "ElectricRoomFB";
-            this.ElectricRoomFB.Size = new System.Drawing.Size(235, 34);
+            this.ElectricRoomFB.Size = new System.Drawing.Size(456, 85);
             this.ElectricRoomFB.TabIndex = 35;
             this.ElectricRoomFB.TextChanged += new System.EventHandler(this.ElectricRoomFB_TextChanged);
             // 
             // CountWardrobeFB
             // 
             this.CountWardrobeFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CountWardrobeFB.Location = new System.Drawing.Point(321, 273);
+            this.CountWardrobeFB.Location = new System.Drawing.Point(344, 275);
             this.CountWardrobeFB.Margin = new System.Windows.Forms.Padding(4);
             this.CountWardrobeFB.Maximum = new decimal(new int[] {
             1299,
@@ -1293,7 +1296,7 @@
             // CountBadroomFB
             // 
             this.CountBadroomFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CountBadroomFB.Location = new System.Drawing.Point(290, 214);
+            this.CountBadroomFB.Location = new System.Drawing.Point(303, 216);
             this.CountBadroomFB.Margin = new System.Windows.Forms.Padding(4);
             this.CountBadroomFB.Maximum = new decimal(new int[] {
             1299,
@@ -1391,7 +1394,7 @@
             // FloorRoomFB
             // 
             this.FloorRoomFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FloorRoomFB.Location = new System.Drawing.Point(139, 81);
+            this.FloorRoomFB.Location = new System.Drawing.Point(123, 84);
             this.FloorRoomFB.Margin = new System.Windows.Forms.Padding(4);
             this.FloorRoomFB.Maximum = new decimal(new int[] {
             1299,
@@ -1452,13 +1455,113 @@
             this.PersonalAdd.Text = "PersonalAdd";
             this.PersonalAdd.UseVisualStyleBackColor = true;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.PostPersonalFB);
+            this.panel5.Controls.Add(this.label25);
+            this.panel5.Controls.Add(this.PhonePersonalFB);
+            this.panel5.Controls.Add(this.label27);
+            this.panel5.Controls.Add(this.AdressPersonalFB);
+            this.panel5.Controls.Add(this.label28);
+            this.panel5.Controls.Add(this.NamePersonalFB);
+            this.panel5.Controls.Add(this.label30);
+            this.panel5.Location = new System.Drawing.Point(20, 11);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1064, 542);
+            this.panel5.TabIndex = 16;
+            // 
+            // PostPersonalFB
+            // 
+            this.PostPersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PostPersonalFB.Location = new System.Drawing.Point(243, 121);
+            this.PostPersonalFB.Multiline = true;
+            this.PostPersonalFB.Name = "PostPersonalFB";
+            this.PostPersonalFB.Size = new System.Drawing.Size(361, 40);
+            this.PostPersonalFB.TabIndex = 28;
+            this.PostPersonalFB.TextChanged += new System.EventHandler(this.PostPersonalFB_TextChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label25.Location = new System.Drawing.Point(37, 295);
+            this.label25.Margin = new System.Windows.Forms.Padding(27, 25, 4, 25);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(125, 29);
+            this.label25.TabIndex = 27;
+            this.label25.Text = "Телефон:";
+            // 
+            // PhonePersonalFB
+            // 
+            this.PhonePersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PhonePersonalFB.Location = new System.Drawing.Point(203, 295);
+            this.PhonePersonalFB.Multiline = true;
+            this.PhonePersonalFB.Name = "PhonePersonalFB";
+            this.PhonePersonalFB.Size = new System.Drawing.Size(348, 35);
+            this.PhonePersonalFB.TabIndex = 26;
+            this.PhonePersonalFB.TextChanged += new System.EventHandler(this.PhonePersonalFB_TextChanged);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label27.Location = new System.Drawing.Point(37, 202);
+            this.label27.Margin = new System.Windows.Forms.Padding(27, 25, 4, 25);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(88, 29);
+            this.label27.TabIndex = 25;
+            this.label27.Text = "Адрес:";
+            // 
+            // AdressPersonalFB
+            // 
+            this.AdressPersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AdressPersonalFB.Location = new System.Drawing.Point(155, 202);
+            this.AdressPersonalFB.Multiline = true;
+            this.AdressPersonalFB.Name = "AdressPersonalFB";
+            this.AdressPersonalFB.Size = new System.Drawing.Size(361, 40);
+            this.AdressPersonalFB.TabIndex = 24;
+            this.AdressPersonalFB.TextChanged += new System.EventHandler(this.AdressPersonalFB_TextChanged);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label28.Location = new System.Drawing.Point(37, 121);
+            this.label28.Margin = new System.Windows.Forms.Padding(27, 25, 4, 25);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(148, 29);
+            this.label28.TabIndex = 23;
+            this.label28.Text = "Должность:";
+            // 
+            // NamePersonalFB
+            // 
+            this.NamePersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NamePersonalFB.Location = new System.Drawing.Point(155, 39);
+            this.NamePersonalFB.Margin = new System.Windows.Forms.Padding(4, 25, 27, 4);
+            this.NamePersonalFB.Name = "NamePersonalFB";
+            this.NamePersonalFB.Size = new System.Drawing.Size(577, 34);
+            this.NamePersonalFB.TabIndex = 16;
+            this.NamePersonalFB.TextChanged += new System.EventHandler(this.NamePersonalFB_TextChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(37, 39);
+            this.label30.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(76, 29);
+            this.label30.TabIndex = 15;
+            this.label30.Text = "ФИО:";
+            // 
             // AccesLvlLabel
             // 
             this.AccesLvlLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.AccesLvlLabel.AutoSize = true;
             this.AccesLvlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AccesLvlLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AccesLvlLabel.Location = new System.Drawing.Point(576, 18);
+            this.AccesLvlLabel.Location = new System.Drawing.Point(576, 22);
             this.AccesLvlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AccesLvlLabel.Name = "AccesLvlLabel";
             this.AccesLvlLabel.Size = new System.Drawing.Size(78, 25);
@@ -1471,7 +1574,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(415, 18);
+            this.label4.Location = new System.Drawing.Point(415, 22);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 25);
@@ -1484,7 +1587,7 @@
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FullNameLabel.Location = new System.Drawing.Point(103, 18);
+            this.FullNameLabel.Location = new System.Drawing.Point(103, 22);
             this.FullNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(60, 25);
@@ -1497,7 +1600,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(17, 18);
+            this.label2.Location = new System.Drawing.Point(17, 22);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 25);
@@ -1675,7 +1778,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(270, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1112, 59);
+            this.panelTitleBar.Size = new System.Drawing.Size(1112, 66);
             this.panelTitleBar.TabIndex = 21;
             // 
             // addRoomButton
@@ -1697,106 +1800,6 @@
             this.addPersonalButton.Text = "Добавить персонал";
             this.addPersonalButton.UseVisualStyleBackColor = true;
             this.addPersonalButton.Click += new System.EventHandler(this.addPersonalButton_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.PostPersonalFB);
-            this.panel5.Controls.Add(this.label25);
-            this.panel5.Controls.Add(this.PhonePersonalFB);
-            this.panel5.Controls.Add(this.label27);
-            this.panel5.Controls.Add(this.AdressPersonalFB);
-            this.panel5.Controls.Add(this.label28);
-            this.panel5.Controls.Add(this.NamePersonalFB);
-            this.panel5.Controls.Add(this.label30);
-            this.panel5.Location = new System.Drawing.Point(20, 11);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1064, 542);
-            this.panel5.TabIndex = 16;
-            // 
-            // PhonePersonalFB
-            // 
-            this.PhonePersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PhonePersonalFB.Location = new System.Drawing.Point(203, 291);
-            this.PhonePersonalFB.Multiline = true;
-            this.PhonePersonalFB.Name = "PhonePersonalFB";
-            this.PhonePersonalFB.Size = new System.Drawing.Size(348, 35);
-            this.PhonePersonalFB.TabIndex = 26;
-            this.PhonePersonalFB.TextChanged += new System.EventHandler(this.PhonePersonalFB_TextChanged);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(37, 202);
-            this.label27.Margin = new System.Windows.Forms.Padding(27, 25, 4, 25);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(88, 29);
-            this.label27.TabIndex = 25;
-            this.label27.Text = "Адрес:";
-            // 
-            // AdressPersonalFB
-            // 
-            this.AdressPersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AdressPersonalFB.Location = new System.Drawing.Point(190, 198);
-            this.AdressPersonalFB.Multiline = true;
-            this.AdressPersonalFB.Name = "AdressPersonalFB";
-            this.AdressPersonalFB.Size = new System.Drawing.Size(361, 40);
-            this.AdressPersonalFB.TabIndex = 24;
-            this.AdressPersonalFB.TextChanged += new System.EventHandler(this.AdressPersonalFB_TextChanged);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(37, 121);
-            this.label28.Margin = new System.Windows.Forms.Padding(27, 25, 4, 25);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(148, 29);
-            this.label28.TabIndex = 23;
-            this.label28.Text = "Должность:";
-            // 
-            // NamePersonalFB
-            // 
-            this.NamePersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NamePersonalFB.Location = new System.Drawing.Point(156, 36);
-            this.NamePersonalFB.Margin = new System.Windows.Forms.Padding(4, 25, 27, 4);
-            this.NamePersonalFB.Name = "NamePersonalFB";
-            this.NamePersonalFB.Size = new System.Drawing.Size(577, 34);
-            this.NamePersonalFB.TabIndex = 16;
-            this.NamePersonalFB.TextChanged += new System.EventHandler(this.NamePersonalFB_TextChanged);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(37, 39);
-            this.label30.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(76, 29);
-            this.label30.TabIndex = 15;
-            this.label30.Text = "ФИО:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(37, 295);
-            this.label25.Margin = new System.Windows.Forms.Padding(27, 25, 4, 25);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(125, 29);
-            this.label25.TabIndex = 27;
-            this.label25.Text = "Телефон:";
-            // 
-            // PostPersonalFB
-            // 
-            this.PostPersonalFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PostPersonalFB.Location = new System.Drawing.Point(243, 117);
-            this.PostPersonalFB.Multiline = true;
-            this.PostPersonalFB.Name = "PostPersonalFB";
-            this.PostPersonalFB.Size = new System.Drawing.Size(361, 40);
-            this.PostPersonalFB.TabIndex = 28;
-            this.PostPersonalFB.TextChanged += new System.EventHandler(this.PostPersonalFB_TextChanged);
             // 
             // userClassBindingSource
             // 
@@ -1861,13 +1864,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.FloorRoomFB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumberRoomFB)).EndInit();
             this.PersonalAdd.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersListBS)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userClassBindingSource)).EndInit();
             this.ResumeLayout(false);
 
