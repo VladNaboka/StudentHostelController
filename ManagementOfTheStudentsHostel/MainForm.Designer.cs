@@ -526,7 +526,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(452, 34);
             this.dateTimePicker2.TabIndex = 21;
-            this.dateTimePicker2.Value = new System.DateTime(2024, 5, 15, 0, 0, 0, 0);
+            this.dateTimePicker2.Value = new System.DateTime(2024, 5, 20, 17, 30, 53, 0);
             this.dateTimePicker2.Visible = false;
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.Account_EditChanget);
             // 
@@ -604,10 +604,11 @@
             // 
             // FormLearningFB
             // 
-            this.FormLearningFB.Location = new System.Drawing.Point(297, 297);
+            this.FormLearningFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormLearningFB.Location = new System.Drawing.Point(294, 293);
             this.FormLearningFB.Multiline = true;
             this.FormLearningFB.Name = "FormLearningFB";
-            this.FormLearningFB.Size = new System.Drawing.Size(179, 29);
+            this.FormLearningFB.Size = new System.Drawing.Size(179, 35);
             this.FormLearningFB.TabIndex = 32;
             this.FormLearningFB.TextChanged += new System.EventHandler(this.FormLearningFB_TextChanged);
             // 
@@ -616,11 +617,11 @@
             this.GenderFB.AutoCompleteCustomSource.AddRange(new string[] {
             "Мужской",
             "Женский"});
-            this.GenderFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GenderFB.Location = new System.Drawing.Point(152, 357);
+            this.GenderFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GenderFB.Location = new System.Drawing.Point(155, 354);
             this.GenderFB.Multiline = true;
             this.GenderFB.Name = "GenderFB";
-            this.GenderFB.Size = new System.Drawing.Size(129, 29);
+            this.GenderFB.Size = new System.Drawing.Size(129, 34);
             this.GenderFB.TabIndex = 31;
             this.GenderFB.TextChanged += new System.EventHandler(this.GenderFB_TextChanged);
             // 
@@ -637,10 +638,11 @@
             // 
             // SpecialityFB
             // 
-            this.SpecialityFB.Location = new System.Drawing.Point(270, 175);
+            this.SpecialityFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SpecialityFB.Location = new System.Drawing.Point(270, 171);
             this.SpecialityFB.Multiline = true;
             this.SpecialityFB.Name = "SpecialityFB";
-            this.SpecialityFB.Size = new System.Drawing.Size(375, 29);
+            this.SpecialityFB.Size = new System.Drawing.Size(375, 38);
             this.SpecialityFB.TabIndex = 29;
             this.SpecialityFB.TextChanged += new System.EventHandler(this.SpecialityFB_TextChanged);
             // 
@@ -657,10 +659,11 @@
             // 
             // FacultyFB
             // 
-            this.FacultyFB.Location = new System.Drawing.Point(189, 118);
+            this.FacultyFB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FacultyFB.Location = new System.Drawing.Point(188, 114);
             this.FacultyFB.Multiline = true;
             this.FacultyFB.Name = "FacultyFB";
-            this.FacultyFB.Size = new System.Drawing.Size(375, 29);
+            this.FacultyFB.Size = new System.Drawing.Size(375, 35);
             this.FacultyFB.TabIndex = 27;
             this.FacultyFB.TextChanged += new System.EventHandler(this.FacultyFB_TextChanged);
             // 
@@ -677,10 +680,11 @@
             // 
             // textIIN
             // 
-            this.textIIN.Location = new System.Drawing.Point(108, 3);
+            this.textIIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textIIN.Location = new System.Drawing.Point(108, -1);
             this.textIIN.Multiline = true;
             this.textIIN.Name = "textIIN";
-            this.textIIN.Size = new System.Drawing.Size(375, 29);
+            this.textIIN.Size = new System.Drawing.Size(375, 35);
             this.textIIN.TabIndex = 24;
             this.textIIN.TextChanged += new System.EventHandler(this.textIIN_TextChanged);
             // 
@@ -715,7 +719,7 @@
             // RoomNB
             // 
             this.RoomNB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RoomNB.Location = new System.Drawing.Point(251, 58);
+            this.RoomNB.Location = new System.Drawing.Point(261, 58);
             this.RoomNB.Margin = new System.Windows.Forms.Padding(4);
             this.RoomNB.Maximum = new decimal(new int[] {
             1299,
@@ -1561,7 +1565,7 @@
             this.AccesLvlLabel.AutoSize = true;
             this.AccesLvlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AccesLvlLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AccesLvlLabel.Location = new System.Drawing.Point(576, 22);
+            this.AccesLvlLabel.Location = new System.Drawing.Point(576, 19);
             this.AccesLvlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AccesLvlLabel.Name = "AccesLvlLabel";
             this.AccesLvlLabel.Size = new System.Drawing.Size(78, 25);
@@ -1574,7 +1578,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(415, 22);
+            this.label4.Location = new System.Drawing.Point(415, 19);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 25);
@@ -1587,7 +1591,7 @@
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FullNameLabel.Location = new System.Drawing.Point(103, 22);
+            this.FullNameLabel.Location = new System.Drawing.Point(103, 19);
             this.FullNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(60, 25);
@@ -1600,7 +1604,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(17, 22);
+            this.label2.Location = new System.Drawing.Point(17, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 25);
@@ -1778,7 +1782,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(270, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1112, 66);
+            this.panelTitleBar.Size = new System.Drawing.Size(1112, 61);
             this.panelTitleBar.TabIndex = 21;
             // 
             // addRoomButton

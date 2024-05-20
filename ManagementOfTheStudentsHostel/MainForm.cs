@@ -540,6 +540,7 @@ namespace ManagementOfTheStudentsHostel
                         }
 
                         buttonSaved.Enabled = false;
+
                         tabControl1.SelectTab(2);
                     }
                     catch (UserAlreadyExistException ex)
@@ -635,6 +636,7 @@ namespace ManagementOfTheStudentsHostel
                     }
 
                     buttonSaved.Enabled = false;
+                    buttonRegistr.Visible = true;
                     RefreshUsersList();
                     tabControl1.SelectTab(0);
                 }
@@ -646,8 +648,6 @@ namespace ManagementOfTheStudentsHostel
 
             if (tabControl1.SelectedIndex == 6)
             {
-                //MessageBox.Show("Добавление нового мероприятия!");
-                // Проверяем, что currentOpenEvent не равен null
                 if (currentOpenRoom != null)
                 {
                     bool newRoom = currentOpenRoom.NumberRoom == 0;
@@ -685,10 +685,7 @@ namespace ManagementOfTheStudentsHostel
                 }
                 else
                 {
-                    // Если currentOpenEvent равен null, создаем новый экземпляр MeropriatiaClass
                     currentOpenRoom = new RoomsClass(0, 0, 0, 0, 0, 0, 0, false, "", false);
-                    //OpenEvent(currentOpenEvent.NameEvent);
-                    // Здесь можно добавить дополнительные действия с currentOpenEvent
                     bool newRoom = currentOpenRoom.NumberRoom == 0;
 
                     currentOpenRoom.NumberRoom = Decimal.ToInt32(NumberRoomFB.Value);
