@@ -147,6 +147,7 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.addRoomButton = new System.Windows.Forms.Button();
             this.addPersonalButton = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.userClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.Students.SuspendLayout();
@@ -1565,7 +1566,7 @@
             this.AccesLvlLabel.AutoSize = true;
             this.AccesLvlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AccesLvlLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AccesLvlLabel.Location = new System.Drawing.Point(576, 19);
+            this.AccesLvlLabel.Location = new System.Drawing.Point(576, 18);
             this.AccesLvlLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AccesLvlLabel.Name = "AccesLvlLabel";
             this.AccesLvlLabel.Size = new System.Drawing.Size(78, 25);
@@ -1578,7 +1579,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(415, 19);
+            this.label4.Location = new System.Drawing.Point(415, 18);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 25);
@@ -1591,7 +1592,7 @@
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FullNameLabel.Location = new System.Drawing.Point(103, 19);
+            this.FullNameLabel.Location = new System.Drawing.Point(103, 18);
             this.FullNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(60, 25);
@@ -1604,7 +1605,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(17, 19);
+            this.label2.Location = new System.Drawing.Point(17, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 25);
@@ -1782,7 +1783,7 @@
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(270, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1112, 61);
+            this.panelTitleBar.Size = new System.Drawing.Size(1112, 59);
             this.panelTitleBar.TabIndex = 21;
             // 
             // addRoomButton
@@ -1805,6 +1806,17 @@
             this.addPersonalButton.UseVisualStyleBackColor = true;
             this.addPersonalButton.Click += new System.EventHandler(this.addPersonalButton_Click);
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(1028, 636);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(163, 36);
+            this.buttonDelete.TabIndex = 24;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Visible = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // userClassBindingSource
             // 
             this.userClassBindingSource.DataSource = typeof(ManagementOfTheStudentsHostel.UserClass);
@@ -1815,6 +1827,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1382, 682);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.addPersonalButton);
             this.Controls.Add(this.addRoomButton);
             this.Controls.Add(this.panelTitleBar);
@@ -2012,5 +2025,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox PostPersonalFB;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

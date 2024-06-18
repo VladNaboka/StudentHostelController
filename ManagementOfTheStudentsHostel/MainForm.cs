@@ -297,7 +297,7 @@ namespace ManagementOfTheStudentsHostel
             //}
 
             // Установка доступности элементов управления в зависимости от уровня доступа
-            // Здесь можно добавить дополнительные условия, если необходимо
+            buttonDelete.Visible = false;
             buttonSaved.Enabled = false; // Отключаем кнопку сохранения изменений по умолчанию
 
             RefreshMeropriatiaList();
@@ -334,7 +334,7 @@ namespace ManagementOfTheStudentsHostel
             //}
 
             // Установка доступности элементов управления в зависимости от уровня доступа
-            // Здесь можно добавить дополнительные условия, если необходимо
+            buttonDelete.Visible = false;
             buttonSaved.Enabled = false; // Отключаем кнопку сохранения изменений по умолчанию
 
             RefreshRoomsList();
@@ -358,6 +358,7 @@ namespace ManagementOfTheStudentsHostel
             AdressPersonalFB.Text = currentOpenPersonal.AdressPersonal;
             PhonePersonalFB.Text = currentOpenPersonal.PhonePersonal;
 
+            buttonDelete.Visible = false;
             buttonSaved.Enabled = false; // Отключаем кнопку сохранения изменений по умолчанию
 
             RefreshPersonalList();
@@ -471,6 +472,7 @@ namespace ManagementOfTheStudentsHostel
                 label15.Visible = true;
                 label14.Visible = true;
                 label13.Visible = true;
+                buttonDelete.Visible = true;
             }
         }
 
@@ -539,6 +541,7 @@ namespace ManagementOfTheStudentsHostel
                             session.UpdateEvent(currentOpenEvent);
                         }
 
+                        buttonDelete.Visible = false;
                         buttonSaved.Enabled = false;
 
                         tabControl1.SelectTab(2);
@@ -582,6 +585,7 @@ namespace ManagementOfTheStudentsHostel
                         MessageBox.Show(ex.Message, "Ошибка!");
                     }
 
+                    buttonDelete.Visible = false;
                     buttonSaved.Enabled = false;
                 }
 
@@ -635,6 +639,7 @@ namespace ManagementOfTheStudentsHostel
                         session.ChangeUser(currentOpenUser);
                     }
 
+                    buttonDelete.Visible = false;
                     buttonSaved.Enabled = false;
                     buttonRegistr.Visible = true;
                     RefreshUsersList();
@@ -674,7 +679,7 @@ namespace ManagementOfTheStudentsHostel
                         {
                             session.UpdateRoom(currentOpenRoom);
                         }
-
+                        buttonDelete.Visible = false;
                         buttonSaved.Enabled = false;
                         tabControl1.SelectTab(5);
                     }
@@ -710,7 +715,7 @@ namespace ManagementOfTheStudentsHostel
                         {
                             session.UpdateRoom(currentOpenRoom);
                         }
-
+                        buttonDelete.Visible = false;
                         buttonSaved.Enabled = false;
                         tabControl1.SelectTab(5);
                     }
@@ -719,6 +724,7 @@ namespace ManagementOfTheStudentsHostel
                         MessageBox.Show(ex.Message, "Ошибка!");
                     }
 
+                    buttonDelete.Visible = false;
                     buttonSaved.Enabled = false;
                 }
             }
@@ -745,7 +751,7 @@ namespace ManagementOfTheStudentsHostel
                         {
                             session.UpdatePersonal(currentOpenPersonal);
                         }
-
+                        buttonDelete.Visible = false;
                         buttonSaved.Enabled = false;
                         tabControl1.SelectTab(4);
                     }
@@ -777,7 +783,7 @@ namespace ManagementOfTheStudentsHostel
                         {
                             session.UpdatePersonal(currentOpenPersonal);
                         }
-
+                        buttonDelete.Visible = false;
                         buttonSaved.Enabled = false;
                         tabControl1.SelectTab(4);
                     }
@@ -786,6 +792,7 @@ namespace ManagementOfTheStudentsHostel
                         MessageBox.Show(ex.Message, "Ошибка!");
                     }
 
+                    buttonDelete.Visible = false;
                     buttonSaved.Enabled = false;
                 }
             }
@@ -815,6 +822,7 @@ namespace ManagementOfTheStudentsHostel
             {
                 string eventName = senderGrid.Rows[e.RowIndex].Cells[senderGrid.Columns["NameEvent"].Index].Value.ToString();
                 OpenEvent(eventName);
+                buttonDelete.Visible = true;
             }
         }
 
@@ -860,6 +868,7 @@ namespace ManagementOfTheStudentsHostel
             buttonRegistr.Visible = true;
             addPersonalButton.Visible = false;
             addRoomButton.Visible = false;
+            buttonDelete.Visible = false;
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -874,6 +883,7 @@ namespace ManagementOfTheStudentsHostel
             buttonRegistr.Visible = false;
             addPersonalButton.Visible = false;
             addRoomButton.Visible = false;
+            buttonDelete.Visible = false;
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -888,6 +898,7 @@ namespace ManagementOfTheStudentsHostel
             buttonRegistr.Visible = false;
             addPersonalButton.Visible = false;
             addRoomButton.Visible = true;
+            buttonDelete.Visible = false;
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -902,6 +913,7 @@ namespace ManagementOfTheStudentsHostel
             buttonRegistr.Visible = false;
             addPersonalButton.Visible = true;
             addRoomButton.Visible = false;
+            buttonDelete.Visible = false;
         }
 
         private void iconButton5_Click(object sender, EventArgs e)
@@ -925,6 +937,7 @@ namespace ManagementOfTheStudentsHostel
             {
                 int roomNum = (int)senderGrid.Rows[e.RowIndex].Cells[senderGrid.Columns["NumberRoom"].Index].Value;
                 OpenRoom(roomNum);
+                buttonDelete.Visible = true;
             }
         }
 
@@ -1027,6 +1040,7 @@ namespace ManagementOfTheStudentsHostel
             {
                 string personalName = senderGrid.Rows[e.RowIndex].Cells[senderGrid.Columns["NamePersonal"].Index].Value.ToString();
                 OpenPersonal(personalName);
+                buttonDelete.Visible = true;
             }
         }
 
@@ -1048,6 +1062,50 @@ namespace ManagementOfTheStudentsHostel
         private void PhonePersonalFB_TextChanged(object sender, EventArgs e)
         {
             buttonSaved.Enabled = true;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                if (currentOpenUser != null && currentOpenUser.Login != "")
+                {
+                    session.DeleteUser(currentOpenUser.Login);
+                    RefreshUsersList();
+                    tabControl1.SelectTab(0);
+                    buttonDelete.Visible = false;
+                }
+            }
+            if (tabControl1.SelectedIndex == 3)
+            {
+                if (currentOpenEvent != null && currentOpenEvent.NameEvent != "")
+                {
+                    session.DeleteEvent(currentOpenEvent.NameEvent);
+                    RefreshMeropriatiaList();
+                    tabControl1.SelectTab(2);
+                    buttonDelete.Visible = false;
+                }
+            }
+            if (tabControl1.SelectedIndex == 7)
+            {
+                if (currentOpenPersonal != null && currentOpenPersonal.NamePersonal != "")
+                {
+                    session.DeletePersonal(currentOpenPersonal.NamePersonal);
+                    RefreshPersonalList();
+                    tabControl1.SelectTab(4);
+                    buttonDelete.Visible = false;
+                }
+            }
+            if (tabControl1.SelectedIndex == 6)
+            {
+                if (currentOpenRoom != null && currentOpenRoom.NumberRoom != 0)
+                {
+                    session.DeleteRoom(currentOpenRoom.NumberRoom);
+                    RefreshRoomsList();
+                    tabControl1.SelectTab(5);
+                    buttonDelete.Visible = false;
+                }
+            }
         }
     }
 }

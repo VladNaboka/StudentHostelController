@@ -241,6 +241,22 @@ namespace ManagementOfTheStudentsHostel
             return userstToReturn;
         }
 
+        public void DeleteUser(string login)
+        {
+            // папка пользователя 
+            string userFolder = Directory.GetCurrentDirectory() + "\\Users\\" + login;
+
+            // проверка сущестования папки пользователя
+            if (Directory.Exists(userFolder))
+            {
+                Directory.Delete(userFolder, true); // true для рекурсивного удаления папки со всеми файлами
+            }
+            else
+            {
+                throw new InvalidOperationException("Пользователь с таким логином не найден!");
+            }
+        }
+
         /// <summary>
         /// </summary>
         /// <param name="newEvent"></param>
@@ -322,6 +338,20 @@ namespace ManagementOfTheStudentsHostel
             return events;
         }
 
+        public void DeleteEvent(string eventName)
+        {
+            var eventToDelete = events.Find(e => e.NameEvent == eventName);
+            if (eventToDelete != null)
+            {
+                events.Remove(eventToDelete);
+                SaveEventsToFile();
+            }
+            else
+            {
+                throw new InvalidOperationException("Мероприятие с таким названием не найдено!");
+            }
+        }
+
         /// <summary>
         /// </summary>
         /// <param name="newRoom"></param>
@@ -398,6 +428,19 @@ namespace ManagementOfTheStudentsHostel
 
             return rooms;
         }
+        public void DeleteRoom(int roomNumber)
+        {
+            var roomToDelete = rooms.Find(r => r.NumberRoom == roomNumber);
+            if (roomToDelete != null)
+            {
+                rooms.Remove(roomToDelete);
+                SaveRoomsToFile();
+            }
+            else
+            {
+                throw new InvalidOperationException("Комната с таким номером не найдена!");
+            }
+        }
 
         /// <summary>
         /// </summary>
@@ -467,6 +510,20 @@ namespace ManagementOfTheStudentsHostel
             }
 
             return personals;
+        }
+
+        public void DeletePersonal(string personalName)
+        {
+            var personalToDelete = personals.Find(p => p.NamePersonal == personalName);
+            if (personalToDelete != null)
+            {
+                personals.Remove(personalToDelete);
+                SavePersonalToFile();
+            }
+            else
+            {
+                throw new InvalidOperationException("Персонал с таким именем не найден!");
+            }
         }
     }
 }
