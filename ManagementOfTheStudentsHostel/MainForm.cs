@@ -919,6 +919,7 @@ namespace ManagementOfTheStudentsHostel
         private void iconButton5_Click(object sender, EventArgs e)
         {
             OpenAccount(session.user.Login);
+            buttonDelete.Visible = false;
             Reset();
         }
 
